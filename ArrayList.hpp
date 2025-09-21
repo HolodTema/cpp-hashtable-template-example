@@ -98,7 +98,7 @@ public:
 		quickSort(comparator, 0, size_ -1);
 	}
 
-	T get(const size_t& index) const {
+	T& get(const size_t& index) const {
 		if (index >= size_) {
 			throw std::out_of_range("Error: ArrayList index is out of range.");
 		}

@@ -94,6 +94,10 @@ public:
 		}
 	}
 
+	bool isEmpty() const {
+		return head_ == nullptr;
+	}
+
 	LinkedList& operator=(const LinkedList& other) {
 		if (this != &other) {
 			LinkedList copy(other);
