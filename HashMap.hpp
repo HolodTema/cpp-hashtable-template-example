@@ -66,7 +66,7 @@ public:
 	}
 
 	Value get(const Key& key) const {
-		LinkedList<Pair>& bucket = table_[getTableIndex(key)];
+		LinkedList<Pair>& bucket = table_.get(getTableIndex(key));
 
 		Value valueToFind;
 		auto iterationCallback = [&key, &valueToFind](Pair& pair) {

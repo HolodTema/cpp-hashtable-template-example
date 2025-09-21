@@ -9,7 +9,7 @@
 template <class T>
 class ArrayList {
 public:
-	static constexpr size_t START_CAPACITY = 2;
+	static constexpr size_t START_CAPACITY = 20;
 	static constexpr float CAPACITY_INCREASE_COEFFICIENT = 1.5;
 
 	ArrayList():
@@ -24,6 +24,13 @@ public:
 		size_(0)
 	{
 		array_ = new T[capacity_];
+	}
+
+	explicit ArrayList(const size_t& size, const T& initValue):
+		capacity_(static_cast<size_t>(CAPACITY_INCREASE_COEFFICIENT*size)),
+		size_(size)
+	{
+		array_ = new T[capacity_] { initValue };
 	}
 
 	ArrayList(const ArrayList& other):
@@ -111,6 +118,10 @@ public:
 
 	size_t capacity() const {
 		return capacity_;
+	}
+
+	T* data() {
+		return array_;
 	}
 
 	ArrayList& operator=(const ArrayList& other) {
