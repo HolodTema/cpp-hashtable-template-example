@@ -138,7 +138,6 @@ void testLinkedListCopyOperator() {
 	std::cout << list2;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~\n";
 }
-
 LinkedList<int> getIntLinkedList() {
 	LinkedList<int> list;
 	list.pushFront(10);
@@ -148,7 +147,6 @@ LinkedList<int> getIntLinkedList() {
 	list.pushFront(30);
 	return list;
 }
-
 void testLinkedListMoveConstructor() {
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Test linked list move constructor\n\n";
@@ -166,7 +164,6 @@ void testLinkedListMoveConstructor() {
 	std::cout << list1;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~\n";
 }
-
 void testLinkedListMoveOperator() {
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~\n";
 	std::cout << "Test linked list move operator\n\n";
@@ -186,7 +183,33 @@ void testLinkedListMoveOperator() {
 	std::cout << list1;
 	std::cout << "~~~~~~~~~~~~~~~~~~~~~\n";
 }
+void testLinkedListForEach() {
+	std::cout << "#############\n";
+	std::cout << "Test linked list for each\n\n";
 
+	LinkedList<std::string> list;
+	list.pushFront("hello");
+	list.pushFront("world");
+	list.pushFront("summer");
+	list.pushFront("winter");
+	list.pushFront("autumn");
+
+	std::cout << list;
+	std::cout << "\n";
+
+	auto incrementor = [](std::string& str) {
+		str = str + "_haha";
+		if (str == "summer_haha") {
+			return false;
+		}
+		return true;
+	};
+	list.forEach(incrementor);
+
+	std::cout << list;
+	std::cout << "\n";
+	std::cout << "#############\n";
+}
 
 void linkedListTests() {
 	testLinkedListAdd();
@@ -196,6 +219,12 @@ void linkedListTests() {
 	testLinkedListCopyOperator();
 	testLinkedListMoveConstructor();
 	testLinkedListMoveOperator();
+	testLinkedListForEach();
+}
+
+
+void hashMapTests() {
+
 }
 
 int main() {

@@ -86,10 +86,11 @@ public:
 	void forEach(const std::function<bool(T&)>& iterationCallback) {
 		Node* currentNode = head_;
 		while (currentNode != nullptr) {
-			bool needIteration = iterationCallback(currentNode->data_);
+			bool needIteration = iterationCallback(currentNode->data);
 			if (!needIteration) {
 				return;
 			}
+			currentNode = currentNode->nextNode;
 		}
 	}
 
